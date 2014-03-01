@@ -1,0 +1,66 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300)
+body,html
+  font-family: 'Open Sans'
+  font-weight: 100
+  font-size: 18px
+  background: #333
+  color: #99F
+h1
+  font-weight: 100
+  max-width: 600px
+  margin: auto
+  margin-bottom: 50px
+  text-align: center
+h2
+  margin: 5px auto
+  font-size: 16px
+  font-weight: 100
+  color: #57EEEE
+  display: block
+  margin-top: 5px
+  height: 35px
+  text-align: center
+
+audio
+  margin: auto
+  width: 170px
+  background: #000
+  display: block
+
+.intercomAudio
+  width: 200px
+  overflow: auto
+  position: relative
+  margin: 30px auto
+  border: 1px solid #555
+  padding: 15px
+.container
+  margin: 100px auto
+  max-width: 600px
+.button
+  background: #666
+  color: #fff
+  padding: 30px
+  text-align: center
+  margin: 10px
+  max-width: 200px
+  margin: auto
+  box-sizing: border-box
+  cursor: pointer
+  transition: background 1s
+  &:hover
+    background: #000
+.play
+  margin-bottom: 30px
+  background: #70BD2A
+  &:before
+    content: 'LISTEN >>'
+  &.playing
+    background: #BDA52A
+    &:before
+      content: 'STOP ||'
+
+.openDoor
+  background: #31C76D
+
+

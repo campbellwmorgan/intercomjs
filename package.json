@@ -1,0 +1,17 @@
+{
+  "name": "IntercomJS",
+  "description":"Interface for the camden collective intercom",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "gpio":"*",
+    "lodash":"*",
+    "socket.io":"*",
+    "coffee-script":"*",
+    "express": "3.4.8",
+    "ejs": "*"
+  }
+}

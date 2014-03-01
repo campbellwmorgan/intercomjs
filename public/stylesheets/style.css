@@ -1,0 +1,69 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+body, html {
+  font-family: "Open Sans";
+  font-weight: 100;
+  font-size: 18px;
+  background: #333333;
+  color: #9999ff; }
+
+h1 {
+  font-weight: 100;
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 50px;
+  text-align: center; }
+
+h2 {
+  margin: 5px auto;
+  font-size: 16px;
+  font-weight: 100;
+  color: #57eeee;
+  display: block;
+  margin-top: 5px;
+  height: 35px;
+  text-align: center; }
+
+audio {
+  margin: auto;
+  width: 170px;
+  background: black;
+  display: block; }
+
+.intercomAudio {
+  width: 200px;
+  overflow: auto;
+  position: relative;
+  margin: 30px auto;
+  border: 1px solid #555555;
+  padding: 15px; }
+
+.container {
+  margin: 100px auto;
+  max-width: 600px; }
+
+.button {
+  background: #666666;
+  color: white;
+  padding: 30px;
+  text-align: center;
+  margin: 10px;
+  max-width: 200px;
+  margin: auto;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background 1s; }
+  .button:hover {
+    background: black; }
+
+.play {
+  margin-bottom: 30px;
+  background: #70bd2a; }
+  .play:before {
+    content: "LISTEN >>"; }
+  .play.playing {
+    background: #bda52a; }
+    .play.playing:before {
+      content: "STOP ||"; }
+
+.openDoor {
+  background: #31c76d; }
