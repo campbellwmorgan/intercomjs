@@ -5,12 +5,36 @@
 
 
 (function() {
-  var openDoor, playAudio, playing, socket;
+  var openDoor, playAudio, playing, ringing, sayHello, socket, stopRinging;
 
-  openDoor = _.throttle(function() {
-    return $.post('/door');
+  socket = io.connect('/');
+
+  ringing = false;
+
+  stopRinging = function() {
+    ringing = false;
+    return $('html').removeClass('ringing');
+  };
+
+  openDoor = _.debounce(function() {
+    if (socket) {
+      return socket.emit('openDoor');
+    }
   }, 3000, {
-    leading: true
+    leading: false,
+    trailing: true
+  });
+
+  sayHello = _.debounce(function() {
+    if (!ringing) {
+      return;
+    }
+    stopRinging();
+    if (socket) {
+      return socket.emit('sayHello');
+    }
+  }, 3000, {
+    trailing: true
   });
 
   playing = false;
@@ -21,17 +45,24 @@
       $('.button.play').removeClass('playing');
       return playing = false;
     }
+    if (socket) {
+      socket.emit('answer');
+    }
     $('.button.play').addClass('playing').after($('#audioData').html());
     return playing = true;
   };
 
-  socket = io.connect('/');
-
   socket.on('buzzer', function() {
+    ringing = true;
+    $('html').addClass('ringing');
     return alert('door buzzer');
   });
 
+  socket.on('answered', stopRinging);
+
   $('.openDoor').click(openDoor);
+
+  $('.sayHello').click(sayHello);
 
   $('.play.button').click(playAudio);
 

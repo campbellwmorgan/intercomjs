@@ -1,10 +1,18 @@
+@import 'bourbon'
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300)
-body,html
+@include keyframes(flash)
+  from
+    background: #FF0070
+  to
+    background: #4074AD
+html
   font-family: 'Open Sans'
   font-weight: 100
   font-size: 18px
   background: #333
   color: #99F
+  &.ringing
+    @include animation(flash 1s infinite)
 h1
   font-weight: 100
   max-width: 600px
@@ -54,13 +62,15 @@ audio
   margin-bottom: 30px
   background: #70BD2A
   &:before
-    content: 'LISTEN >>'
+    content: 'Listen'
   &.playing
     background: #BDA52A
     &:before
-      content: 'STOP ||'
+      content: 'Hang Up ||'
 
 .openDoor
+  margin-top: 30px
+  background: #316DC7
+.sayHello
   background: #31C76D
-
 

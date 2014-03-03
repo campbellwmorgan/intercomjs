@@ -1,10 +1,42 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
-body, html {
+@-webkit-keyframes flash {
+  from {
+    background: #ff0070; }
+
+  to {
+    background: #4074ad; } }
+
+@-moz-keyframes flash {
+  from {
+    background: #ff0070; }
+
+  to {
+    background: #4074ad; } }
+
+@-o-keyframes flash {
+  from {
+    background: #ff0070; }
+
+  to {
+    background: #4074ad; } }
+
+@keyframes flash {
+  from {
+    background: #ff0070; }
+
+  to {
+    background: #4074ad; } }
+
+html {
   font-family: "Open Sans";
   font-weight: 100;
   font-size: 18px;
   background: #333333;
   color: #9999ff; }
+  html.ringing {
+    -webkit-animation: flash 1s infinite;
+    -moz-animation: flash 1s infinite;
+    animation: flash 1s infinite; }
 
 h1 {
   font-weight: 100;
@@ -59,11 +91,15 @@ audio {
   margin-bottom: 30px;
   background: #70bd2a; }
   .play:before {
-    content: "LISTEN >>"; }
+    content: "Listen"; }
   .play.playing {
     background: #bda52a; }
     .play.playing:before {
-      content: "STOP ||"; }
+      content: "Hang Up ||"; }
 
 .openDoor {
+  margin-top: 30px;
+  background: #316dc7; }
+
+.sayHello {
   background: #31c76d; }

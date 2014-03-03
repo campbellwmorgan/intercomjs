@@ -31,8 +31,24 @@ class Sockets
 
   addClient: (client) =>
     @clients.push client
+    client.on 'openDoor', @openDoor
+    client.on 'sayHello', @sayHello
+    client.on 'answer', @emitAnswered
     client.on 'disconnect', =>
       for oldClient, indx in @clients
         @clients.splice indx if oldClient is client
+
+  # send to all clients
+  # that door has been answered
+  emitAnswered: =>
+    _.invoke @clients, 'emit', ['answered']
+
+  sayHello: =>
+    @emitAnswered()
+    # run say hello logic
+
+  openDoor: =>
+    @emitAnswered()
+    # run open door stuff
 
 module.exports = Sockets
