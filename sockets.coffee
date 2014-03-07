@@ -27,6 +27,10 @@ class Sockets
       interval: 50
       ready: @gpio4Ready
 
+    setTimeout =>
+      @gpio17.set 1
+    , 2000
+
   gpio4Ready: =>
     @gpio4.on 'change', (val) =>
       clearTimeout @gpioTimeout if val is 0
