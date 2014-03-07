@@ -15,8 +15,6 @@ class Sockets
   listenSockets: =>
     @io.sockets.on 'connection', @addClient
   listenGPIO: =>
-    ready = =>
-      @gpio17.set 1
 
     @gpio17 = gpio.export 17,
       direction: 'out'
@@ -28,8 +26,15 @@ class Sockets
       ready: @gpio4Ready
 
     setTimeout =>
+      console.log 'setting 0'
+      @gpio17.set 0
+    , 1000
+
+    setTimeout =>
+      console.log 'setting 1'
       @gpio17.set 1
     , 2000
+
 
   gpio4Ready: =>
     @gpio4.on 'change', (val) =>
