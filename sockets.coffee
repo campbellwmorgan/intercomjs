@@ -1,7 +1,7 @@
 Player = require 'player'
 _ = require 'lodash'
 gpio = require 'gpio'
-player = new Player(__dir + '/audio/hello.mp3')
+player = new Player(__dirname + '/audio/hello.mp3')
 class Sockets
   constructor: (@io) ->
     @clients = []

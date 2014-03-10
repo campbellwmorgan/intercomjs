@@ -18,23 +18,28 @@
 
   openDoor = _.debounce(function() {
     if (socket) {
-      return socket.emit('openDoor');
+      socket.emit('openDoor');
     }
+    $('.openDoor').addClass('opening');
+    return setTimeout(function() {
+      return $('.openDoor').removeClass('opening');
+    }, 2000);
   }, 3000, {
-    leading: false,
-    trailing: true
+    leading: true,
+    trailing: false
   });
 
   sayHello = _.debounce(function() {
-    if (!ringing) {
-      return;
-    }
     stopRinging();
     if (socket) {
-      return socket.emit('sayHello');
+      socket.emit('sayHello');
+      $('.sayHello').addClass('playing');
+      return setTimeout(function() {
+        return $('.sayHello').removeClass('playing');
+      }, 2000);
     }
   }, 3000, {
-    trailing: true
+    leading: true
   });
 
   playing = false;

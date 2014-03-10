@@ -11,18 +11,27 @@ stopRinging = ->
 
 openDoor = _.debounce ->
   socket.emit 'openDoor' if socket
+  $('.openDoor').addClass 'opening'
+  setTimeout ->
+    $('.openDoor').removeClass 'opening'
+  , 2000
 , 3000
 ,
-  leading: false
-  trailing: true
+  leading: true
+  trailing: false
 
 sayHello = _.debounce ->
-  return unless ringing
+  #return unless ringing
   stopRinging()
-  socket.emit 'sayHello' if socket
+  if socket
+    socket.emit 'sayHello'
+    $('.sayHello').addClass 'playing'
+    setTimeout ->
+      $('.sayHello').removeClass 'playing'
+    , 2000
 , 3000
 ,
-  trailing: true
+  leading: true
 
 
 playing = false

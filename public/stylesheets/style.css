@@ -100,6 +100,14 @@ audio {
 .openDoor {
   margin-top: 30px;
   background: #316dc7; }
+  .openDoor:before {
+    content: "Open Door"; }
+  .openDoor.opening:before {
+    content: "Opening..."; }
 
 .sayHello {
   background: #31c76d; }
+  .sayHello:before {
+    content: "Say Hello"; }
+  .sayHello.playing:before {
+    content: "Saying Hello..."; }

@@ -71,6 +71,16 @@ audio
 .openDoor
   margin-top: 30px
   background: #316DC7
+  &:before
+    content: 'Open Door'
+  &.opening
+    &:before
+      content: 'Opening...'
 .sayHello
   background: #31C76D
+  &:before
+    content: 'Say Hello'
+  &.playing
+    &:before
+      content: 'Saying Hello...'
 
