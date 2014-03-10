@@ -19,7 +19,6 @@ class Sockets
     @gpio17 = gpio.export 17,
       direction: 'out'
       interval: 200
-      ready: ready
     @gpio4 = gpio.export 4,
       direction: 'in'
       interval: 50
