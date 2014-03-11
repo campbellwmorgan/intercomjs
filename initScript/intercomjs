@@ -14,7 +14,7 @@
 # If you want a command to always run, put it here
 
 # Carry out specific functions when asked to by the system
-app=/root/intercomjs/app/js
+app=/root/intercomjs/app.js
 logfile=/root/log_intercomjs_express.log
 case "$1" in
   start)
