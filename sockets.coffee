@@ -85,7 +85,7 @@ class Sockets
       @gpio17.set 1
       console.log 'door open sequence finished'
       @gpio17InProcess = false
-    , 100
+    , 300
 
   openDoor: =>
     @emitAnswered()

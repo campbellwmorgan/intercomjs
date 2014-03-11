@@ -14,23 +14,38 @@
 # If you want a command to always run, put it here
 
 # Carry out specific functions when asked to by the system
+app=/root/intercomjs/app/js
+logfile=/root/log_intercomjs_express.log
 case "$1" in
   start)
     echo "Starting Darkice"
     start-stop-daemon --start --background --exec /usr/bin/darkice
     echo "Starting node forever"
-    PORT=80 /root/intercomjs/node_modules/.bin/forever start /root/intercomjs/app.js -l /root/log_intercomjs_express.log
+    PATH=/usr/local/bin:$PATH
+    export NODE_ENV=/usr/local/bin/node
+    PORT=80 forever start -l $logfile -a $app
+    ;;
+  restart)
+    echo "Restarting Darkice"
+
+    start-stop-daemon --stop --oknodo --quiet --exec /usr/bin/darkice
+    start-stop-daemon --start --background --exec /usr/bin/darkice
+
+    echo "Restarting Forever app"
+    /usr/local/bin/forever restartall
+    ;;
+  status)
+    /usr/local/bin/forever list
     ;;
   stop)
-    echo "stop all node apps"
-    #
-    /root/intercomjs/node_modules/.bin/forever stopall
+    echo "stop all node apps via forever"
+    /usr/local/bin/forever stopall
+
     echo "stopping darkice"
     start-stop-daemon --stop --oknodo --quiet --exec /usr/bin/darkice
-
     ;;
   *)
-    echo "Usage: /etc/init.d/noip {start|stop}"
+    echo "Usage: /etc/init.d/intercomjs {start|restart|stop|status}"
     exit 1
     ;;
 esac

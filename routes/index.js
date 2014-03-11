@@ -4,5 +4,8 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Collective Intercom' });
+  res.render('index', {
+    title: 'Collective Intercom' ,
+    host: req.host
+  });
 };
