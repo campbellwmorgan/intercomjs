@@ -77,7 +77,7 @@ class Sockets
     @gpio0.set 0
     # wait 200ms then go low
     setTimeout =>
-      @gpio.set 1
+      @gpio0.set 1
       console.log 'door open sequence finished'
       @gpio0InProcess = false
     , 100
