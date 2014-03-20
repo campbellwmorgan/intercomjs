@@ -26,7 +26,7 @@ class Sockets
 
     setTimeout =>
       console.log 'setting 1'
-      @gpiO.set 1
+      @gpio0.set 1
     , 2000
 
 
