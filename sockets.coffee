@@ -6,8 +6,8 @@ class Sockets
   constructor: (@io) ->
     @clients = []
     @gpio4 = false
-    @gpio17 = false
-    @gpio17InProcess = false
+    @gpio0 = false
+    @gpio0InProcess = false
     @listenSockets()
     @listenGPIO()
     @gpioTimeout = false
@@ -16,7 +16,7 @@ class Sockets
     @io.sockets.on 'connection', @addClient
   listenGPIO: =>
 
-    @gpio17 = gpio.export 17,
+    @gpio0 = gpio.export 0,
       direction: 'out'
       interval: 200
     @gpio4 = gpio.export 4,
@@ -25,13 +25,8 @@ class Sockets
       ready: @gpio4Ready
 
     setTimeout =>
-      console.log 'setting 0'
-      @gpio17.set 0
-    , 1000
-
-    setTimeout =>
       console.log 'setting 1'
-      @gpio17.set 1
+      @gpiO.set 1
     , 2000
 
 
@@ -69,27 +64,27 @@ class Sockets
     player.play()
 
   # go high on 17 (ie open door)
-  goHigh17: =>
+  goHigh0: =>
     console.log 'try opening door'
 
     # don't open door if gpio17 not ready to access
     # don't run if the door open sequence in process
-    return if @gpio17InProcess
+    return if @gpio0InProcess
 
     console.log 'opening door...'
     # go high
-    @gpio17InProcess = true
-    @gpio17.set 0
+    @gpio0InProcess = true
+    @gpio0.set 0
     # wait 200ms then go low
     setTimeout =>
-      @gpio17.set 1
+      @gpio.set 1
       console.log 'door open sequence finished'
-      @gpio17InProcess = false
-    , 300
+      @gpio0InProcess = false
+    , 100
 
   openDoor: =>
     @emitAnswered()
     # run open door stuff
-    @goHigh17()
+    @goHigh0()
 
 module.exports = Sockets
